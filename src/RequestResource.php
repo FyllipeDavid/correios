@@ -8,7 +8,7 @@ use GuzzleHttp\Client;
  */
 class RequestResource
 {
-    private $endpoint = 'http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?nCdEmpresa=&sDsSenha=&sCepOrigem=43820080&sCepDestino=43810040&nVlPeso=1&nCdFormato=1&nVlComprimento=16&nVlAltura=5&nVlLargura=15&nVlDiametro=0&sCdMaoPropria=s&nVlValorDeclarado=200&sCdAvisoRecebimento=n&StrRetorno=xml&nCdServico=41106%2C40010';
+    private $endpoint = '';
 
     function __construct()
     {

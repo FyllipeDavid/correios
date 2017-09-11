@@ -2,6 +2,10 @@
 
 namespace Joelsonm\Correios;
 
+
+use Joelsonm\Correios\Models\Services;
+
+use Joelsonm\Correios\Responses\Calculate;
 /**
  *
  */
@@ -14,7 +18,7 @@ class Correios extends RequestResource
             'sDsSenha' => config()->get('correios.password'),
             'sCepOrigem' => str_replace('-', '', config()->get('correios.address.zipcode')),
             'sCepDestino' => str_replace('-', '',$zipcode),
-            'nVlPeso' => 1,
+            'nVlPeso' => $weight,
             'nCdFormato' => 1,
             'nVlComprimento' => $width,
             'nVlAltura' => $height,
@@ -23,10 +27,14 @@ class Correios extends RequestResource
             'nVlValorDeclarado' => config()->get('correios.options.declared_value'),
             'sCdAvisoRecebimento' => config()->get('correios.options.receipt_notification') == true ? 's' : 'n',
             'StrRetorno' => 'xml',
-            'nCdServico' => implode(',', config()->get('correios.services', [])),
+            'nCdServico' => implode(',', Services::valid(config()->get('correios.services', []))),
             'sCdMaoPropria' => config()->get('correios.options.byhand') == true ? 's' : 'n',
         ];
-        
-        return $this->getRequest('', $params);
+
+        if (empty($params['nCdServico'])) {
+            throw new \Exception("Nenhum serviço válido disponível");
+        }
+
+        return Calculate::response($this->getRequest('http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx', $params));
     }
 }
