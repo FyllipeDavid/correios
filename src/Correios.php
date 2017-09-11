@@ -11,7 +11,7 @@ use Joelsonm\Correios\Responses\Calculate;
  */
 class Correios extends RequestResource
 {
-    public function calculate($zipcode, $width, $height, $depth, $weight, $diameter = 0)
+    public function calculate($zipcode, $width, $height, $length, $weight, $diameter = 0)
     {
         $params = [
             'nCdEmpresa' => config()->get('correios.company'),
@@ -20,9 +20,9 @@ class Correios extends RequestResource
             'sCepDestino' => str_replace('-', '',$zipcode),
             'nVlPeso' => $weight,
             'nCdFormato' => 1,
-            'nVlComprimento' => $width,
+            'nVlComprimento' => $length,
             'nVlAltura' => $height,
-            'nVlLargura' => $depth,
+            'nVlLargura' => $width,
             'nVlDiametro' => $diameter,
             'nVlValorDeclarado' => config()->get('correios.options.declared_value'),
             'sCdAvisoRecebimento' => config()->get('correios.options.receipt_notification') == true ? 's' : 'n',
