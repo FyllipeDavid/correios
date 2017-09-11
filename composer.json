@@ -1,0 +1,20 @@
+{
+    "name": "joelsonm/correios",
+    "description": "API dos Correios para Laravel",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joelson",
+            "email": "joelsonm@live.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Joelsonm\\Correios\\": "src/"
+        }
+    }
+}
