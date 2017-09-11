@@ -55,11 +55,11 @@ class RequestResource
 
     private function response($response){
 
-        $xml = json_encode(simplexml_load_string($response->getBody(),'SimpleXMLElement',LIBXML_NOCDATA));
+        $json = json_decode(json_encode(simplexml_load_string($response->getBody(),'SimpleXMLElement',LIBXML_NOCDATA)));
 
         return (object) [
             'status' => $response->getStatusCode(),
-            'data' => json_decode($xml)
+            'data' => $json
         ];
     }
 
