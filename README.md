@@ -5,6 +5,10 @@
 ```
   composer require joelsonm/correios
 ```
+ou adiciona no composer.json
+```
+  "joelsonm/correios" : "dev-master"
+```
 
 ### Registrar providers e facades no config/app.php
 
