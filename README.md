@@ -19,7 +19,7 @@ Provider
 ```
 Facades
 ```
-  'Correios' => \Joelsonm\Correios\Facades\Correios::class
+  'Correios' => Joelsonm\Correios\Facades\Correios::class
 ```
 
 ### Publicando arquivo de configuração
