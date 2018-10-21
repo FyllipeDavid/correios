@@ -33,6 +33,12 @@ Configure os dados no arquivo config/correios.php
 
 ## USANDO
 
+Buscar Endereços
+```
+  Correios::search(CEP)
+```
+
+Calcular Frete
 ```
   Correios::calculate(CEP, LARGURA, ALTURA, COMPRIMENTO, PESO)
 ```
